@@ -17,7 +17,7 @@ def sigmoid(x):
     """
 
     ### YOUR CODE HERE
-
+    s = 1 / (1 + np.exp(-x))
     ### END YOUR CODE
 
     return s
@@ -54,10 +54,12 @@ def naiveSoftmaxLossAndGradient(
 
     ### YOUR CODE HERE
 
-    ### Please use the provided softmax function (imported earlier in this file)
-    ### This numerically stable implementation helps you avoid issues pertaining
-    ### to integer overflow. 
-
+   	y_hat = softmax(centerWordVec @ outsideVectors.T)
+   	loss = np.log(y_hat[outsideWordIdx])
+   	y = np.zeros_like(y_hat)  # 返回y_hat形状的数组
+   	y[outsideWordIdx] = 1
+   	gradCenterVec = (y_hat - y) @ outsideVectors
+   	gradOutsideVecs = 
 
     ### END YOUR CODE
 
